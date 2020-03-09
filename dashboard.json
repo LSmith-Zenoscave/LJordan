@@ -1,0 +1,47 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Connections",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "var header = \"<table><thead><tr><th></th><th></th></tr></thead><tbody>\";\nvar data = datasources[\"Connections\"][\"data\"][\"allConnections\"][\"edges\"];\nvar dataRows = data.map(edge => `<tr><td>${edge.node.destIP}</td><td>${edge.node.sourcePort}</td></tr>`).join('');\nvar footer = \"</tbody></table>\";\nreturn header + dataRows + footer;",
+						"height": 4
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Connections",
+			"type": "JSON",
+			"settings": {
+				"url": "http://penguin.linux.test:8000",
+				"use_thingproxy": false,
+				"refresh": 5,
+				"method": "POST",
+				"body": "{\"query\":\"{allConnections{edges{node{sourcePort,destIP}}}}\"}",
+				"headers": [
+					{
+						"name": "Content-Type",
+						"value": "application/json"
+					}
+				]
+			}
+		}
+	],
+	"columns": 3
+}
