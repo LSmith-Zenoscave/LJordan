@@ -29,7 +29,7 @@
 			"name": "Connections",
 			"type": "JSON",
 			"settings": {
-				"url": "http://penguin.linux.test:8000",
+				"url": "http://localhost:8000",
 				"use_thingproxy": false,
 				"refresh": 5,
 				"method": "POST",
